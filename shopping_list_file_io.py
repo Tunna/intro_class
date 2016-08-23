@@ -39,10 +39,22 @@ def write_to_file(file_name):
             my_file.write(item + "\n")
 
 
+def write_to_file_append(file_name, food_text):
+    with open(file_name, mode = "a") as my_file:
+        my_file.write(food_text + "\n")            
+
+
+def read_file_by_iteration(file_name):
+    output_list = []
+    with open(file_name) as my_file:
+        for line in my_file: 
+            clean_line = line.strip()
+            shopping_list = output_list.append(clean_line)
+    return shopping_list
 
 
 def main():
-
+    
     # TEST FUNCTIONS
     # 1 - add 4 times to your shopping list
     print add_shopping_list("apple")
@@ -52,6 +64,8 @@ def main():
 
     # 2 - Add an item that is already in the list. what happens?
     print add_shopping_list("apple")
+    print add_shopping_list("pear")
+    print add_shopping_list("orange")
 
     # 3 - Remove an item on your list
     print remove_item("apple")
@@ -60,7 +74,14 @@ def main():
     print remove_item("chicken")
 
     file_name = "shopping_list_file.txt"
+    
     write_to_file(file_name)
+
+    write_to_file_append(file_name, "mango")
+
+    read_file_by_iteration(file_name)
+
+  
 
 if __name__ == "__main__":
     main()
